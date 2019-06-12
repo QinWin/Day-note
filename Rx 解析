@@ -1,0 +1,140 @@
+1：语法糖
+   观察者模式 典型理解 被订阅者 订阅 订阅者
+
+   链式编程(返回当前的对象)
+    所谓的链式编程就是可以通过"点"语法，将需要执行的代码块连续的书写下去，使得代码简单易读，书写方便。
+
+   函数式编程  指令式（命令式编程）编程  过程化编程  面向对象编程
+    属于结构化编程
+
+   事件驱动型编程  响应式编程是一种面向数据流和变化传播的编程范式。
+
+   匿名内部类 等价于 继承该类的子类
+2：版本 Rx 2
+   RxJava 最基本的意义在于统一了所有异步任务的回调接口
+   链式模式
+    Observable.create().map().flatMap().subscribeOn().observeOn().subscribe();
+    小说 ——> 读者
+   主要类 Observable Observer Single Maybe Flowable
+   2.1一个简单的例子
+    Disposable d = Observable.just("hello", "world")
+                   .delay(3, TimeUnit.SECONDS)
+                   .subscribe(new Consumer<String>() {
+                       @Override
+                       public void accept(String s) throws Exception {
+                           System.out.print(s + "\t");
+                       }
+                   });
+    //释放资源
+    d.dispose();
+   //out   hello world
+
+   2.2方便理解 不使用匿名内部类
+   Observable.create(new MyObservable()).subscribe(new MyObserver());
+   首先看创建方法 create()
+       @CheckReturnValue
+       @NonNull
+       @SchedulerSupport(SchedulerSupport.NONE)
+       public static <T> Observable<T> create(ObservableOnSubscribe<T> source) {
+           //检验source 是否为空
+           ObjectHelper.requireNonNull(source, "source is null");
+           return RxJavaPlugins.onAssembly(new ObservableCreate<T>(source));
+       }
+   返回了 ObservableCreate 对象 下一步 调用父类方法 subscribe(Observer o)
+
+    class MyObservable implements ObservableOnSubscribe<String> {
+        @Override
+        public void subscribe(ObservableEmitter<String> emitter) throws Exception {
+            emitter.onNext("Hello");
+        }
+    }
+    被订阅者  订阅  订阅者  被订阅者完成对订阅者的订阅  就是 subscribe 方法。再看一下这个方法：
+    @SchedulerSupport(SchedulerSupport.NONE)
+    @Override
+    public final void subscribe(Observer<? super T> observer) {
+        ObjectHelper.requireNonNull(observer, "observer is null");
+        try {
+
+            observer = RxJavaPlugins.onSubscribe(this, observer);
+
+            ObjectHelper.requireNonNull(observer, "The RxJavaPlugins.onSubscribe hook returned a null Observer. Please change the handler provided to RxJavaPlugins.setOnObservableSubscribe for invalid null returns. Further reading: https://github.com/ReactiveX/RxJava/wiki/Plugins");
+            //1：关键方法
+            subscribeActual(observer);
+        } catch (NullPointerException e) { // NOPMD
+            throw e;
+        } catch (Throwable e) {
+            Exceptions.throwIfFatal(e);
+            // can't call onError because no way to know if a Disposable has been set or not
+            // can't call onSubscribe because the call might have set a Subscription already
+            RxJavaPlugins.onError(e);
+
+            NullPointerException npe = new NullPointerException("Actually not, but can't throw other exceptions due to RS");
+            npe.initCause(e);
+            throw npe;
+        }
+    }
+
+    subscribeActual(observer);是抽象方法（钩子）， 具体实现在子类 ObservableCreate 我们看一下实现
+            @Override
+            protected void subscribeActual(Observer<? super T> observer) {
+                //CreateEmitter 实现了 ObservableEmitter，Dispose 接口
+                CreateEmitter<T> parent = new CreateEmitter<T>(observer);
+                //2:订阅者 执行onSubscribe 方法
+                observer.onSubscribe(parent);
+
+                try {
+                    //3：source 就是 MyObservable 执行 MyObservable subcribe()方法
+                    //在该方法中一般进行 onNext(), onComplete()
+                    //具体执行 CreateEmitter 的onNext()方法
+                    source.subscribe(parent);
+                } catch (Throwable ex) {
+                    Exceptions.throwIfFatal(ex);
+                    parent.onError(ex);
+                }
+            }
+
+    我们看一下 CreateEmitter onNext() 方法
+                @Override
+                public void onNext(T t) {
+                    if (t == null) {
+                        onError(new NullPointerException("onNext called with null. Null values are generally not allowed in 2.x operators and sources."));
+                        return;
+                    }
+                    if (!isDisposed()) {
+                        //4：MyObserver onNext执行
+                        observer.onNext(t);
+                    }
+                }
+    至此 next 流程已经完成
+    class MyObserver implements Observer<String> {
+        @Override
+        public void onSubscribe(Disposable d) {
+
+        }
+
+        @Override
+        public void onNext(String o) {
+            System.out.print(o + " ");
+        }
+
+        @Override
+        public void onError(Throwable e) {
+
+        }
+
+        @Override
+        public void onComplete() {
+
+        }
+    }
+
+  Observer 官方介绍
+  The Observable class is the non-backpressured, optionally multi-valued base reactive class that
+  offers factory methods, intermediate operators and the ability to consume synchronous
+  and/or asynchronous reactive dataflows.
+
+
+3：感谢
+http://gank.io/post/560e15be2dca930e00da1083
+https://www.jianshu.com/p/b1ab67ebdfca
+https://juejin.im/post/5cce6fb05188254177317fdc

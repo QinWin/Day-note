@@ -1,0 +1,51 @@
+1：基本概念理解
+注解 java 1.5之后添加 可以做为一个标签来理解，不可以更改java源码
+元注解
+    @Retention 声明注解存活时期 java -> class -> .dex
+    @Target 声明注解可标志的类型（类， 属性，方法，参数）
+    @Documented @Inherited @Repeatable
+基本注解
+    @Override @Deprecated @SuppressWarnings  @SafeVarargs  @FunctionalInterface
+
+反射 动态修改 在运行时获取一个类型的所有构造器，属性，方法
+
+2:  APT(Annotation Processing Tool)
+    annotationProcessor 编译时注解处理器
+     android-apt这个插件官方已经宣布不再维护，插件gradle2.2以上的版本使用annotationprocessor
+    JavaPoet 第三方  动态生成java代码
+3: 关键类
+ButterKnife
+通过反射得到绑定的"_ViewBinding"类构造器并创建实例返回Unbinder。 "_ViewBinding"类实现了Unbinder接口。
+
+ButterKnifeProcessor 继承 AbstractProcessor 编译时注解处理
+AbstractProcessor 是一个抽象类,我们继承它需要实现一个抽象方法process,在这个方法里面去处理注解。
+
+需要实现的方法
+    public class MyProcessor extends AbstractProcessor {
+        @Override
+        public synchronized void init(ProcessingEnvironment processingEnvironment) {
+            //获取工具类
+        }
+
+        @Override
+        public Set<String> getSupportedAnnotationTypes() {
+            //注解名列表 = 要处理的注解类的名称集合
+        }
+
+
+        @Override
+        public SourceVersion getSupportedSourceVersion() {
+            //SourceVersion.latestSupported() java 版本
+        }
+
+
+        @Override
+        public boolean process(Set<? extends TypeElement> set, RoundEnvironment roundEnvironment) {
+            //处理注解
+            //生成 _ViewBinding类
+        }
+    }
+
+
+
+
