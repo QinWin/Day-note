@@ -83,7 +83,8 @@ Linux 内核 Linux Kernel 基于Linux 2.6
    
   伪代码
  
-  ```
+
+  :    
   public void dispatchTouchEvent(MotionEvent event) {
     boolean consume = false;
     if(onInterceptTouchEvent()) {
@@ -93,7 +94,6 @@ Linux 内核 Linux Kernel 基于Linux 2.6
     }
     return consume;
   }
-  ```
   
   滑动冲突 
   
