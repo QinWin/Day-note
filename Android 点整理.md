@@ -9,9 +9,9 @@ Linux 内核 Linux Kernel 基于Linux 2.6
 # 2.Activity
 ## 2.1 Activity 生命周期 
   ![生命周期](./android-image/activity-lifecycle.png)
-  *1 正常 onCreate() onRestart() onStart() onResume() onPause() onStop() onDestroy()
+  * 正常 onCreate() onRestart() onStart() onResume() onPause() onStop() onDestroy()
           onCreate()中调用finish()方法，系统立刻调用onDestroy()不调用其他生命周期方法
-  *2 异常 系统配置发生更改 横 1 竖 2屏切换  语言 onConfigChange()
+  * 异常 系统配置发生更改 横 1 竖 2屏切换  语言 onConfigChange()
                内存回收低优先级activity被回收
                onStop() 之前 onSaveInstanceState() onStart()之后 onRestoreInstanceState()
 ## 2.2 Activity 启动模式
@@ -83,7 +83,7 @@ Linux 内核 Linux Kernel 基于Linux 2.6
    
   伪代码
  
-  '''
+  ''' 
   public void dispatchTouchEvent(MotionEvent event) {
     boolean consume = false;
     if(onInterceptTouchEvent()) {
@@ -93,7 +93,7 @@ Linux 内核 Linux Kernel 基于Linux 2.6
     }
     return consume;
   }
-  '''
+  ''' 
   
   滑动冲突 
   
