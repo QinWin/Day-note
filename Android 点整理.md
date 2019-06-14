@@ -1,11 +1,11 @@
-1.Android 系统架构
+# 1.Android 系统架构
 系统应用，
 应用框架Java Framework (Application frameworks),
 系统运行库和安卓运行环境 c/c++ & ART,
 硬件抽象层 HAL,
 Linux 内核 Linux Kernel 基于Linux 2.6
 
-2.Activity
+# 2.Activity
  Activity 生命周期 
            ![Image text](./android-image/activity-lifecycle.png)
           正常 onCreate() onRestart() onStart() onResume() onPause() onStop() onDestroy()
@@ -32,7 +32,7 @@ Linux 内核 Linux Kernel 基于Linux 2.6
   Activity view 和 window 关系
   启动activity 创建window, phoneWindow 包含一个DecorView, DecorView继承自FrameLayout, addView()添加view
 
-3.Service 生命周期
+# 3.Service 生命周期
  Service startService() onCreate() onStartCommand() onDestroy()
          bindService()  onCreate() onBind() onUnbind() onDestroy()
  长活 onStartCommand() 中返回 START_STICKY START_IMMEDITENLY
@@ -40,11 +40,11 @@ Linux 内核 Linux Kernel 基于Linux 2.6
       注册广播监听onDestroy()   
       提高service优先级别1--10000    
 
-4.BroadcastReceiver 广播机制
+# 4.BroadcastReceiver 广播机制
    静态注册 动态注册
    有序广播，一般广播， 粘连广播
    
-5.ContentProvider  
+# 5.ContentProvider  
  onCreate()
  onInsert()
  onQuery()
@@ -52,26 +52,25 @@ Linux 内核 Linux Kernel 基于Linux 2.6
  onDelete()
  onDescription() 
    
-6:IPC(inner process communication)进程间通信
-  
+# 6:IPC(inner process communication)进程间通信
     Intent 
     File 共享
     AIDL   
     ContentProvider
     Socket
-7.Fragment 
+# 7.Fragment 
     Fragment生命周期 onAttach() onCreate() onActivityCreate() onCreateView() onStart() onResume()
                      onPause()  onStop() onDestroyView() onDestroy() onDetach()
     静态加载  <fragment/>
     动态加载  FragmentManager FragmentTransaction                  
     
-7.View 绘制过程
+# 7.View 绘制过程
   常用布局  FrameLayout RelativeLayout LinearLayout TableLayout(TableRow) AbsoluteLayout
   onMeasure()
   onLayout()
   onDraw()
 
-8.ListView原理及优化
+# 8.ListView原理及优化
   ![Image text](android-image/android-listview.jpg)
   优化，针对适配器复用View
         针对Bitmap优化，ImageLoader
@@ -93,15 +92,15 @@ Linux 内核 Linux Kernel 基于Linux 2.6
   }
   滑动冲突 
   
-9.Handler机制
+# 9.Handler机制
   handler message  messageQueue looper
   
-10.性能优化
+# 10.性能优化
   布局优化 merge include viewStub
   Bitmap 采样， 三级缓存加载
   内存泄漏 
   
-11.常用框架，第三方相关库
+#11.常用框架，第三方相关库
  mvc mvp mvvm
  图片 glide 
  动画 nineoldanim
