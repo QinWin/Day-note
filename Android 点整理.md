@@ -54,11 +54,11 @@ Linux 内核 Linux Kernel 基于Linux 2.6
  onDescription() 
    
 # 6:IPC(inner process communication)进程间通信
-    .Intent 
-    .File 共享
-    .AIDL   
-    .ContentProvider
-    .Socket
+    1.Intent 
+    2.File 共享
+    3.AIDL   
+    4.ContentProvider
+    5.Socket
 # 7.Fragment 
     Fragment生命周期 onAttach() onCreate() onActivityCreate() onCreateView() onStart() onResume()
                      onPause()  onStop() onDestroyView() onDestroy() onDetach()
