@@ -7,14 +7,14 @@
 Linux 内核 Linux Kernel 基于Linux 2.6
 
 # 2.Activity
- Activity 生命周期 
-           ![Image text](./android-image/activity-lifecycle.png)
-          正常 onCreate() onRestart() onStart() onResume() onPause() onStop() onDestroy()
+## 2.1 Activity 生命周期 
+  ![生命周期](./android-image/activity-lifecycle.png)
+  *1.正常 onCreate() onRestart() onStart() onResume() onPause() onStop() onDestroy()
           onCreate()中调用finish()方法，系统立刻调用onDestroy()不调用其他生命周期方法
-          异常 系统配置发生更改 横 1 竖 2屏切换  语言 onConfigChange()
+  *2.异常 系统配置发生更改 横 1 竖 2屏切换  语言 onConfigChange()
                内存回收低优先级activity被回收
                onStop() 之前 onSaveInstanceState() onStart()之后 onRestoreInstanceState()
- Activity 启动模式
+## 2.2 Activity 启动模式
     launchMode 若服用Activity则调用onNewIntent()方法
         标准模式standard 每次启动Activity不管Activity是否在栈内存在，都会创建新的实例并压入栈顶。 
       谁启动就入谁的栈
@@ -24,13 +24,13 @@ Linux 内核 Linux Kernel 基于Linux 2.6
       调到栈顶回调onNewIntent()，并将其上的实例出栈，否则创建实例并入栈。若栈没有创建，直接创建栈放入Activity。
         单实例模式singleInstance 只能单独存在于一个任务栈中
         
- Intent 常用flag
+## 2.3 Intent 常用flag
   FLAG_ACTIVITY_NEWTASK
   FLAG_ACTIVITY_SINGLETOP
   FLAG_ACTIVITY_CLEARTOP
   FLAG_ACTIVITY_EXCLUDE_RECENT
   
-  Activity view 和 window 关系
+## 2.4 Activity view 和 window 关系
   启动activity 创建window, phoneWindow 包含一个DecorView, DecorView继承自FrameLayout, addView()添加view
 
 # 3.Service 生命周期
@@ -82,6 +82,7 @@ Linux 内核 Linux Kernel 基于Linux 2.6
    requestDisallowInterceptTouchEvent()
    
   伪代码
+  '''
   public void dispatchTouchEvent(MotionEvent event) {
     boolean consume = false;
     if(onInterceptTouchEvent()) {
@@ -91,6 +92,7 @@ Linux 内核 Linux Kernel 基于Linux 2.6
     }
     return consume;
   }
+  '''
   滑动冲突 
   
 # 9.Handler机制
