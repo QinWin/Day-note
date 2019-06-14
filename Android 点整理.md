@@ -16,7 +16,7 @@ Linux 内核 Linux Kernel 基于Linux 2.6
                onStop() 之前 onSaveInstanceState() onStart()之后 onRestoreInstanceState()
 ## 2.2 Activity 启动模式
     launchMode 若服用Activity则调用onNewIntent()方法
-        标准模式standard 每次启动Activity不管Activity是否在栈内存在，都会创建新的实例并压入栈顶。 
+    标准模式standard 每次启动Activity不管Activity是否在栈内存在，都会创建新的实例并压入栈顶。 
       谁启动就入谁的栈
         栈顶模式singleTop 若在栈顶存在需启动的Activity则回调用onNewIntent()方法，否则和standard一样。
       谁启动就入谁的栈
@@ -83,7 +83,7 @@ Linux 内核 Linux Kernel 基于Linux 2.6
    
   伪代码
  
-  ''' 
+  ```
   public void dispatchTouchEvent(MotionEvent event) {
     boolean consume = false;
     if(onInterceptTouchEvent()) {
@@ -93,7 +93,7 @@ Linux 内核 Linux Kernel 基于Linux 2.6
     }
     return consume;
   }
-  ''' 
+  ```
   
   滑动冲突 
   
