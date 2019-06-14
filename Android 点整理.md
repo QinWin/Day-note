@@ -1,4 +1,5 @@
-# 1.Android 系统架构
+#1.Android 系统架构
+
 系统应用，
 应用框架Java Framework (Application frameworks),
 系统运行库和安卓运行环境 c/c++ & ART,
@@ -100,7 +101,7 @@ Linux 内核 Linux Kernel 基于Linux 2.6
   Bitmap 采样， 三级缓存加载
   内存泄漏 
   
-#11.常用框架，第三方相关库
+# 11.常用框架，第三方相关库
  mvc mvp mvvm
  图片 glide 
  动画 nineoldanim
