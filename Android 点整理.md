@@ -6,6 +6,8 @@
 硬件抽象层 HAL,
 Linux 内核 Linux Kernel 基于Linux 2.6
 
+每一个Android应用程序都在它自己的进程中运行，都拥有一个独立的Dalvik虚拟机实例,每一个DVM都是在Linux 中的一个进程 
+
 # 2.Activity
 ## 2.1 Activity 生命周期 
   ![生命周期](./android-image/activity-lifecycle.png)
@@ -33,6 +35,10 @@ Linux 内核 Linux Kernel 基于Linux 2.6
 ## 2.4 Activity view 和 window 关系
   启动activity 创建window, phoneWindow 包含一个DecorView, DecorView继承自FrameLayout, addView()添加view
 
+## 2.5 jdk 8 接口方法
+    android 24
+    1> default 修饰返回值的方法
+    2> static 方法
 # 3.Service 生命周期
  Service startService() onCreate() onStartCommand() onDestroy()
          bindService()  onCreate() onBind() onUnbind() onDestroy()
