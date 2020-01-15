@@ -1,6 +1,6 @@
-# ijkplayer [github] (https://github.com/bilibili/ijkplayer) 是blibli开源项目
+## ijkplayer [github] (https://github.com/bilibili/ijkplayer) 是blibli开源项目
 
-# 编译环境配置
+## 编译环境配置
    centeros7
    jdk 8
    sdk
@@ -21,7 +21,7 @@
    export ANDROID_NDK=/usr/local/android/android-ndk-r10e
    export PATH=$PATH:$ANDROID_NDK
    
-# 编译 
+## 编译 
   若需支持rtsp 需要添加 在路径 ijkplayer-android/config下module-lite.sh中添加
      export COMMON_FF_CFG_FLAGS="$COMMON_FF_CFG_FLAGS --enable-protocol=rtp"
      export COMMON_FF_CFG_FLAGS="$COMMON_FF_CFG_FLAGS --enable-demuxer=rtsp"
@@ -117,10 +117,10 @@
     跑起来：
 
    }
-# 遇到问题
+## 遇到问题
   在centeros 中 git 路径形式"git://host"
 
-# 编译成功生成.so库
+## 编译成功生成.so库
    [jniLibs](./ijkplayer-jniLibs)
    支持rtsp流需要添加：添加位置 IjkVideoView类中createPlayer方法
                         ijkMediaPlayer.setOption(IjkMediaPlayer.OPT_CATEGORY_FORMAT, "rtsp_transport", "tcp");
