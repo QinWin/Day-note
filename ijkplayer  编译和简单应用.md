@@ -1,4 +1,5 @@
-## ijkplayer [github] (https://github.com/bilibili/ijkplayer) 是blibli开源项目
+# bilibili 
+ ijkplayer [github] (https://github.com/bilibili/ijkplayer) 是blibli开源项目
 
 ## 编译环境配置
    centeros7
