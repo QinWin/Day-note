@@ -68,3 +68,16 @@ ssh key
  
  先创建远程库，然后，从远程库克隆
  git clone git@github.com:QinWin/gitskills.git
+ 
+ fatal:
+ Updates were rejected because the tip of your current branch is behind
+ its remote counterpart.
+ 解决：推送失败，因为你的小伙伴的最新提交和你试图推送的提交有冲突，解决办法也很简单，Git已经提示我们，
+ 先用git pull把最新的提交从origin/dev抓下来，然后，在本地合并，解决冲突，再推送：
+ git pull  
+ If you wish to set tracking information for this branch you can do so with:
+ git branch --set-upstream-to=origin/<branch> dev
+ git pull也失败了，原因是没有指定本地dev分支与远程origin/dev分支的链接，根据提示，设置dev和origin/dev的链接：
+ git branch --set-upstream-to=origin/dev dev
+
+ 
