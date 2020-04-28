@@ -74,6 +74,11 @@ Git跟踪并管理的是修改，而非文件。
 
 master分支应该是非常稳定的，也就是仅用来发布新版本，平时不能在上面干活
 
+从远程抓取分支，使用git pull，如果有冲突，要先处理冲突。
+
+如果git pull提示no tracking information，则说明本地分支和远程分支的链接关系没有创建，用命令git branch --set-upstream-to <branch-name> origin/<branch-name>
+
+
 ### 3.名词释义
 
 工作区 working reposity
@@ -108,6 +113,14 @@ Git的版本库里存了很多东西，其中最重要的就是称为stage（或
  git checkout -b dev origin/dev
  问题
  fatal: 'origin/dev' is not a commit and a branch 'dev' cannot be created from it
- 
- 
+  or Updates were rejected because the tip of your current branch is behind
+ its remote counterpart.
+ 解决：推送失败，因为你的小伙伴的最新提交和你试图推送的提交有冲突，解决办法也很简单，Git已经提示我们，
+ 先用git pull把最新的提交从origin/dev抓下来，然后，在本地合并，解决冲突，再推送：
+ git pull  
+ If you wish to set tracking information for this branch you can do so with:
+ git branch --set-upstream-to=origin/<branch> dev
+ git pull也失败了，原因是没有指定本地dev分支与远程origin/dev分支的链接，根据提示，设置dev和origin/dev的链接：
+ git branch --set-upstream-to=origin/dev dev
+
  
