@@ -48,6 +48,8 @@ Git跟踪并管理的是修改，而非文件。
 
 从来没有被添加到版本库就被删除的文件，是无法恢复的！
 
+从远程抓取分支，使用git pull，如果有冲突，要先处理冲突。
+
 如果git pull提示no tracking information，则说明本地分支和远程分支的链接关系没有创建，用命令git branch --set-upstream-to <branch-name> origin/<branch-name>
 
 ### 3.名词释义
