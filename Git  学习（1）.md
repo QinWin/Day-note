@@ -15,6 +15,25 @@
   git  log  查看提交日志  排序从最近到最远
   git  log --pretty=oneline  格式化呈现 
   
+  //分支切换推荐使用switch
+  git branch branchname 创建分支
+  git checkout branchname 切换到分支
+  git switch branchname 切换分支
+  git checkout -b branchname  创建并切换到分支
+  git switch -c branchname 创建并切换到分支
+  git branch -d branchname 删除分支
+  git branch -D <name>  强行删除分支（一般指未合并的分支）
+  
+  git merge branchname 合并分支到当前分支
+  
+  git stash 把当前工作现场“储藏”起来，等以后恢复现场后继续工作
+  git stash list 查看之前保存的工作现场
+  git stash apply  恢复工作现场 
+  git stash drop   删除保存的工作现场
+  git stash pop   恢复工作现场并删除保存的工作现场
+  
+  git cherry-pick <commit> 把bug提交的修改“复制”到当前分支
+  
   //谨慎操作
   git  reset --hard HEAD^  回退一个版本
   git  reset --hard HEAD^^ 回退两个版本
@@ -28,6 +47,11 @@
   git reset HEAD -- filename 撤销暂存区修改
   
   git rm filename  删除文件
+  
+  
+  git log --graph --pretty=oneline --abbrev-commit  图形化显示分支状态
+  
+  git merge --no-ff -m "message" branchname  合并分支到当前分支
   
 ### 2.常识点
 首先这里再明确一下，所有的版本控制系统，其实只能跟踪文本文件的改动，比如TXT文件，网页，所有的程序代码
@@ -48,6 +72,8 @@ Git跟踪并管理的是修改，而非文件。
 
 从来没有被添加到版本库就被删除的文件，是无法恢复的！
 
+master分支应该是非常稳定的，也就是仅用来发布新版本，平时不能在上面干活
+
 ### 3.名词释义
 
 工作区 working reposity
@@ -58,13 +84,30 @@ Git的版本库里存了很多东西，其中最重要的就是称为stage（或
 第一个分支master，以及指向master的一个指针叫HEAD。
 
 ### 4.远程仓库
-ssh key
+ 生成ssh key
  ssh-keygen -t rsa -C "youremail@example.com"
+ 
+ 若配置多个远程仓库，需对当前工程进行配置
+ git config --local user.email "email"
+ git config --local user.name  "name"
  
  关联远程仓库
  git remote add origin git@github.com:QinWin/learngit.git
  推送并关联远程仓库
  git push -u origin master
+ 推送分支到远程
+ git push origin <name> 
  
  先创建远程库，然后，从远程库克隆
  git clone git@github.com:QinWin/gitskills.git
+ 
+ git remote 查看远程仓库
+ git remote -v 查看远程仓库详情
+ 
+ 创建远程分支到本地
+ git checkout -b dev origin/dev
+ 问题
+ fatal: 'origin/dev' is not a commit and a branch 'dev' cannot be created from it
+ 
+ 
+ 
