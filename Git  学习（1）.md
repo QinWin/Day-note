@@ -34,6 +34,8 @@
   
   git cherry-pick <commit> 把bug提交的修改“复制”到当前分支
   
+  git rebase  操作可以把本地未push的分叉提交历史整理成直线；
+  
   //谨慎操作
   git  reset --hard HEAD^  回退一个版本
   git  reset --hard HEAD^^ 回退两个版本
