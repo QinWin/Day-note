@@ -18,11 +18,12 @@
   //分支切换推荐使用switch
   git branch branchname 创建分支
   git checkout branchname 切换到分支
-  git switch branchname 切换分支
   git checkout -b branchname  创建并切换到分支
-  git switch -c branchname 创建并切换到分支
   git branch -d branchname 删除分支
   git branch -D <name>  强行删除分支（一般指未合并的分支）
+  //新版本
+  git switch branchname 切换分支
+  git switch -c branchname 创建并切换到分支
   
   git merge branchname 合并分支到当前分支
   
