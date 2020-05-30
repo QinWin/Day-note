@@ -145,7 +145,7 @@ public class MySurfaceView extends SurfaceView implements SurfaceHolder.Callback
 常见的属性方法，translationX, translationY, rotation, rotationX, rotationY, scaleX, scaleY, pivotX, pivotY, x, y alpha, 
 PropertyValuesHolder 针对同一个对象的多个属性同时作用多种动画
 ValueAnimator -- 数值发生器
-'''
+~~~
                 //一个样例
                 ValueAnimator animator = ValueAnimator.ofFloat(0, 100);
                 animator.setTarget(button);
@@ -159,9 +159,9 @@ ValueAnimator -- 数值发生器
                         button.setLayoutParams(params);
                     }
                 });
-'''
+~~~
 布局动画 在布局中添加好用android:animateLayoutChanges="true"
-'''
+~~~
         //布局动画代码样例
         FrameLayout layout = findViewById(R.id.layout);
         ScaleAnimation scale = new ScaleAnimation(3, 1, 3, 1);
@@ -169,7 +169,7 @@ ValueAnimator -- 数值发生器
         LayoutAnimationController controller = new LayoutAnimationController(scale, 0.5f);
         controller.setOrder(LayoutAnimationController.ORDER_NORMAL);
         layout.setLayoutAnimation(controller);
-'''
+~~~
 插值器(定义动画变换速率) 常用插值器 LinearInterpolator，AccelerateInterpolator, DecelerateInterpolator
 SVG(Scalable Vector Graphics) 可伸缩矢量图形
 
