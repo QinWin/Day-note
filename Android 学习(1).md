@@ -1,8 +1,8 @@
 #### Android 查遗补缺
 上层控件负责下层子控件的测量和绘制，并传递交互事件
-自定义view时 重要的方法 onMeasure() onLayout() onDraw() onTouchEvent() onInterceptTouchEvent() computeScroll()  onFinishInflate()  onSizeChanged()
+自定义view时 重要的方法 onMeasure() onLayout() onDraw() onTouchEvent() onInterceptTouchEvent() computeScroll()<系统在onDraw()方法中调用>  onFinishInflate()  onSizeChanged()
 默认onMeasure()方法只支持EXACTLY模式
-关键点重新确定控件的大小 setMeasuredDimension()
+关键点重新确定控件的大小 setMeasuredDimension() MeasureSpec
 
 Canvas canvas = new Canvas(bitmap);推荐使用bitmap构造方法。
 传进去的bitmap与通过这个bitmap创建的canvas是紧密联系在一起的，这个过程我们称之为装载画布
@@ -30,9 +30,9 @@ Android坐标系（屏幕左上角原点）getRawX(), getRawY(); 视图坐标系
 
 scrollBy()(偏移量)  scrollTo()(到点) 注：移动的是View的content，即让view的内容移动，如果在View Group中使用则移动
 的是所有子view， 但在View中，移动的将是内容
-scroller computeScrollOffset() 是否完成了整体滑动
+scroller computeScrollOffset() 是否完成了整体滑动 横向和纵向移动getCurrentX() getCurrentY()
 
-几种图形
+几种图形 draw(Canvas canvas, Paint paint)
 RectShape RoundRectShape（绘制自定义圆角个数的圆角框） OvalShape ArcShape
 
 xml shape
@@ -40,10 +40,10 @@ oval（椭圆）  rectangle(矩形，corners)
 line(跨越包含视图宽度的水平线。此形状需要 <stroke> 元素定义线宽)  
 ring(特有属性 android:innerRadius  android:thickness) 
 
-canavas 画布
+canvas 画布
 save() 保存图层 restore() 合并图层
 translate() 平移画布 rotate() 旋转画布 ---坐标轴的移动和旋转
-drawBitmapMesh(@NonNull Bitmap bitmap<将要扭曲的图像>, int meshWidth<需要的横向网格数>, int meshHeight<需要的纵向网格数>,
+绘制复杂效果(如旗帜效果)drawBitmapMesh(@NonNull Bitmap bitmap<将要扭曲的图像>, int meshWidth<需要的横向网格数>, int meshHeight<需要的纵向网格数>,
             @NonNull float[] verts<网格交叉点坐标数>, int vertOffset<数组中开始跳过的（x, y）坐标数>, @Nullable int[] colors, int colorOffset,
             @Nullable Paint paint)
 
