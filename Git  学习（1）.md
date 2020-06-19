@@ -56,7 +56,7 @@
   
   git log --graph --pretty=oneline --abbrev-commit  图形化显示分支状态
   
-  git merge --no-ff -m "message" branchname  合并分支到当前分支
+  git merge --no-ff -m "message" branchname  合并分支到当前分支（记录合并点）
   
   git config --global alias.st status 创建别名
   
