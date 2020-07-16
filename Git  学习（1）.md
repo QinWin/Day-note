@@ -138,8 +138,16 @@ Git的版本库里存了很多东西，其中最重要的就是称为stage（或
  git branch --set-upstream-to=origin/<branch> dev
  git pull也失败了，原因是没有指定本地dev分支与远程origin/dev分支的链接，根据提示，设置dev和origin/dev的链接：
  git branch --set-upstream-to=origin/dev dev
-
-
+ 
+ 首次关联远程仓库 git pull
+ 问题
+ fatal: refusing to merge unrelated histories
+ 解决：git pull origin <branch name> --allow-unrelated-histories
+       
+       git clean  -d  -fx
+       d  -----删除未被添加到git的路径中的文件
+       f  -----强制运行
+       x  -----删除忽略文件已经对git来说不识别的文件
 ### 4.标签
 发布一个版本时，我们通常先在版本库中打一个标签（tag），这样，就唯一确定了打标签时刻的版本。将来无论什么时候，
 取某个标签的版本，就是把那个打标签的时刻的历史版本取出来。所以，标签也是版本库的一个快照。

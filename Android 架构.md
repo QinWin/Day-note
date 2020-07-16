@@ -2,12 +2,17 @@
 
 ###  记忆一波
      glide  picasso  图片
+     ijkplayer   mobile-ffmpeg  视频
      okhttp  okgo  okio  retrofit  网络
      gson fastjson    json数据
      rxjava rxandroid  异步
-     greendao  数据库  eventbus 事件总线       
+     greendao  room 数据库  
+     eventbus 事件总线       
      butterknifer dagger  注入
      smartrefreshlayout  下拉刷新加载
+     jProgress  进度条
+       
+     
      
      高德                 地图
      
@@ -16,7 +21,7 @@
      辅助网站  蒲公英 apk发布渠道
             应用宝   腾讯bugly（bug监测）  乐固 加固
      
-     四.移动端常用的bug收集方案
+     移动端常用的bug收集方案
      1, 友盟
      优点：Android和iOS可用，统计功能突出，能捕获应用层Crash；
      缺点：bug收集不及时。
