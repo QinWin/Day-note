@@ -1,6 +1,6 @@
 # 常用的三方，工具 防止脑子短路
 
-###  记忆一波
+###  记录一波
      glide  picasso  图片
      ijkplayer   mobile-ffmpeg  视频
      okhttp  okgo  okio  retrofit  网络
@@ -11,7 +11,9 @@
      butterknifer dagger  注入
      smartrefreshlayout  下拉刷新加载
      jProgress  进度条
-       
+     pickerview  选择器                                                                                 
+     zxing  二维码 条形码
+     ucrop  photoview  图片裁剪  
      
      
      高德                 地图
