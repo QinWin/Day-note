@@ -1,6 +1,6 @@
 ## JAVA编程思想学习
 https://github.com/LingCoder/OnJava8
-https://lingcoder.gitee.io/onjava8/#/sidebar
+国内更快：https://lingcoder.gitee.io/onjava8/#/sidebar
 
 ## 工具
 
