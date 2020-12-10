@@ -1,20 +1,23 @@
 # 常用的三方，工具 防止脑子短路
 
 ###  记录一波
+
      glide  picasso  图片
      ijkplayer   mobile-ffmpeg  视频
-     okhttp  okgo  okio  retrofit  网络
+     okhttp  okgo  okio  retrofit  volley(google 原生） 网络
      gson fastjson    json数据
      rxjava rxandroid  异步
-     greendao  room 数据库  
+     greendao  room(google 原生） 数据库  
      eventbus 事件总线       
      butterknifer dagger  注入
-     smartrefreshlayout  下拉刷新加载
+     smartrefreshlayout lexboxlayout  下拉刷新加载
      jProgress  进度条
-     pickerview  选择器                                                                                 
+     org.jaaksi:pickerview:3.0.1  日期选择器                                                                                 
      zxing  二维码 条形码
      ucrop  photoview  图片裁剪  
      
+     reactive-streams-jdk 1.0.3
+    
      
      高德                 地图
      

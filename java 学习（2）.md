@@ -2,6 +2,8 @@
 https://github.com/LingCoder/OnJava8
 国内更快：https://lingcoder.gitee.io/onjava8/#/sidebar
 
+学习资料：https://github.com/singgel/JAVA
+
 ## 工具
 
 window软件管理工具  https://chocolatey.org/ 
