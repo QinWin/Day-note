@@ -9,7 +9,7 @@
      rxjava rxandroid  异步
      greendao  room(google 原生） 数据库  
      eventbus 事件总线       
-     butterknifer dagger  注入
+     butterknifer viewbinding databinding google(dagger hilt) 注入
      smartrefreshlayout lexboxlayout  下拉刷新加载
      jProgress  进度条
      org.jaaksi:pickerview:3.0.1  日期选择器                                                                                 
